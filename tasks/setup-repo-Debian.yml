@@ -1,0 +1,14 @@
+---
+- name: "Ensure HTTPS apt transport installed."
+  apt:
+    name: "apt-transport-https"
+    state: present
+
+- name: "Add repository."
+  template:
+    src: templates/google-chrome.list.j2
+    dest: /etc/apt/sources.list.d/google-chrome.list
+
+- name: "Add repo key."
+  apt_key:
+    url: "{{ chrome_gpg_key_url }}"

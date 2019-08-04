@@ -1,0 +1,4 @@
+---
+chrome_package: google-chrome-stable
+chrome_deb_source: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+chrome_gpg_key_url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
