@@ -20,6 +20,7 @@
 - name: "Refresh apt sources list"
   apt:
     update_cache: true
+    cache_valid_time: 3600
 
 - name: "Install Google Chrome"
   apt:
