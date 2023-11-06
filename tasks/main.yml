@@ -1,6 +1,16 @@
 ---
-- name: "Ensure GPG tools are installed."
-  apt:
+- name: "Fix 'configured multiple times'"
+  ansible.builtin.file:
+    path: "/etc/apt/sources.list.d/dl_google_com_linux_chrome_deb.list"
+    state: absent
+
+- name: "Refresh apt sources list"
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: "Ensure GPG tools are installed"
+  ansible.builtin.apt:
     name: "{{ packages }}"
     state: present
   vars:
@@ -8,16 +18,17 @@
       - "gpgv"
       - "gnupg"
 
-- include_tasks: setup-repo-Ubuntu.yml
-  when:
-    - ansible_distribution == 'Ubuntu'
+- name: "Add GPG key"
+  ansible.builtin.apt_key:
+    url: "{{ chrome_gpg_key_url }}"
 
-- name: "Refresh apt sources list"
-  apt:
-    update_cache: true
-    cache_valid_time: 3600
+- name: "Add repository"
+  ansible.builtin.apt_repository:
+    repo: "{{ chrome_deb_source }}"
+    filename: "google-chrome"
+    state: present
 
 - name: "Install Google Chrome"
-  apt:
+  ansible.builtin.apt:
     name: "{{ chrome_package }}"
     state: present

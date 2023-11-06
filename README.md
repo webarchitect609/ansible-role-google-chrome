@@ -1,9 +1,13 @@
 Ansible Role: Google Chrome
-=========
+===========================
 
-[![Build Status](https://travis-ci.org/webarchitect609/ansible-role-google-chrome.svg?branch=master)](https://travis-ci.org/webarchitect609/ansible-role-google-chrome)
+[![Build Status](https://github.com/webarchitect609/ansible-role-google-chrome/workflows/build/badge.svg?branch=master)](https://github.com/webarchitect609/ansible-role-google-chrome/actions?query=workflow%3Abuild)
+[![Latest version](https://img.shields.io/github/v/tag/webarchitect609/ansible-role-google-chrome?sort=semver)](https://github.com/webarchitect609/ansible-role-google-chrome/releases)
+[![Downloads](https://img.shields.io/ansible/role/d/30616)](https://galaxy.ansible.com/ui/standalone/roles/webarchitect609/google_chrome/)
+[![License](https://img.shields.io/github/license/webarchitect609/ansible-role-google-chrome)](LICENSE.md)
+[![More stuff from me](https://img.shields.io/badge/galaxy-webarchitect609-000)](https://galaxy.ansible.com/ui/standalone/namespaces/7493/)
 
-Installs Google Chrome from the official deb repository.
+Installs [Google Chrome](https://www.google.ru/intl/en/chrome/) from the official repository.
 
 Requirements
 ------------
@@ -13,21 +17,7 @@ None.
 Role Variables
 --------------
 
-None of the variables need to be altered for installing the latest stable version of the application. 
-However, all available variables are listed below, along with default values (see `defaults/main.yml`):
-
-    chrome_package: google-chrome-stable
-    
-Package name to install
-    
-    chrome_deb_source: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-    
-Repository url.
-    
-    chrome_gpg_key_url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
-
-GPG key url.
-
+See [defaults/main.yml](defaults/main.yml)
 
 Dependencies
 ------------
@@ -37,16 +27,13 @@ None.
 Example Playbook
 ----------------
 
-    - hosts: servers
-      roles:
-         - { role: webarchitect609.google_chrome }
+```yaml
+- hosts: servers
+  roles:
+    - { role: webarchitect609.google_chrome }
+```
 
-License
--------
+License & Author Information
+----------------------------
 
-MIT
-
-Author Information
-------------------
-
-This role was created in 2019 by Gripinskiy Sergey.
+[BSD-3-Clause](LICENSE.md)
